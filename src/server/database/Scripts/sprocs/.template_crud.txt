@@ -1,0 +1,44 @@
+IF NOT EXISTS ( SELECT * FROM   sysobjects WHERE  id = object_id(N'[dbo].[MyProc]') and OBJECTPROPERTY(id, N'IsProcedure') = 1 )
+BEGIN
+    exec('CREATE PROCEDURE [dbo].[MyProc] AS BEGIN SET NOCOUNT ON; END')
+END
+
+GO
+
+ALTER PROCEDURE[dbo].[MyProc]
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SET XACT_ABORT,
+        QUOTED_IDENTIFIER,
+        ANSI_NULLS,
+        ANSI_PADDING,
+        ANSI_WARNINGS,
+        ARITHABORT,
+        CONCAT_NULL_YIELDS_NULL ON;
+    SET NUMERIC_ROUNDABORT OFF;
+ 
+    DECLARE @localTran bit
+    IF @@TRANCOUNT = 0
+    BEGIN
+        SET @localTran = 1
+        BEGIN TRANSACTION LocalTran
+    END
+ 
+    BEGIN TRY
+ 
+        --Insert code here
+ 
+        IF @localTran = 1 AND XACT_STATE() = 1
+            COMMIT TRAN LocalTran
+ 
+    END TRY
+    BEGIN CATCH
+
+        IF @localTran = 1 AND XACT_STATE() <> 0
+            ROLLBACK TRAN
+ 
+        ;THROW
+
+    END CATCH
+END

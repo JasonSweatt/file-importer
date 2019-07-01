@@ -1,0 +1,104 @@
+# Set default behaviour, in case users don't have core.autocrlf set.
+* text=auto
+
+# Explicitly declare text files we want to always be normalized and converted
+# to native line endings on checkout.
+*.asax text
+*.bat text
+*.conf text
+*.config text
+*.cshtml text
+*.csproj text
+*.css text
+*.csv text
+*.dbproj text
+*.dtd text
+*.episode text
+*.feature text
+*.fsproj text
+*.gitignore text
+*.html text
+*.idx text
+*.java text
+*.js text
+*.json text
+*.jsp text
+*.keep text
+*.md text
+*.ncrunchproject text
+*.nupkg text
+*.nuspec text
+*.properties text
+*.resources text
+*.rtf text
+*.sample text
+*.scss text
+*.sql text
+*.suo text
+*.svg text
+*.targets text
+*.transform text
+*.txt text
+*.user text
+*.vbproj text
+*.xml text
+*.xsd text
+*.xsl text
+
+# Denote all files that are truly binary and should not be modified.
+*._ binary
+*.cache binary
+*.chm binary
+*.dll binary
+*.doc binary
+*.docx binary
+*.dot binary
+*.eot binary
+*.eot binary
+*.exe binary
+*.gif binary
+*.jar binary
+*.jpg binary
+*.map binary
+*.otf binary
+*.pack binary
+*.pdb binary
+*.png binary
+*.pp binary
+*.pri binary
+*.props binary
+*.ps1 binary
+*.psd1 binary
+*.psm1 binary
+*.resx binary
+*.rsp binary
+*.tasks binary
+*.ttf binary
+*.vsdx binary
+*.woff binary
+*.woff2 binary
+*.xdt binary
+*.xls binary
+*.zip binary
+
+# Custom for Visual Studio
+*.cs     diff=csharp
+
+# Diff as plain text
+*.DOC	 diff=astextplain
+*.doc	 diff=astextplain
+*.DOCX diff=astextplain
+*.docx diff=astextplain
+*.DOT  diff=astextplain
+*.dot  diff=astextplain
+*.PDF	 diff=astextplain
+*.pdf  diff=astextplain
+*.RTF	 diff=astextplain
+*.rtf	 diff=astextplain
+
+# Declare files that will always have CRLF line endings on checkout.  T4 templates mess up if their line endings are messed up.  It should be CRLF (IIRC).
+*.tt text eol=crlf
+*.sln text eol=crlf
+
+# Resharper DotSettings files are in Unix Format
+*.DotSettings text eol=lf

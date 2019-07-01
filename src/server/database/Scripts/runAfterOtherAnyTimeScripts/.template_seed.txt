@@ -1,0 +1,2 @@
+IF NOT EXISTS (SELECT 1 FROM Entity WHERE Name='MyValue') 
+	INSERT INTO Entity(Name) VALUES ('MyValue')
